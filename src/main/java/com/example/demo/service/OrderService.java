@@ -19,7 +19,8 @@ public class OrderService {
     @Autowired
     OrderItemService orderItemService;
     public Order save(Order order){
-        order.setUuid(UUID.randomUUID());
+        //TODO random uuid string
+        order.setUuid("ran");
         order.setCreatedAt(LocalDateTime.now());
         order =  orderRepository.save(order);
         Order finalOrder = order;

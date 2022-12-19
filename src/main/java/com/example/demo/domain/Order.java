@@ -12,8 +12,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
-
 @Entity
 @Table(name = "customer_order")
 public class Order implements Serializable {
@@ -21,7 +19,7 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private UUID uuid;
+    private String uuid;
 
     private LocalDateTime createdAt;
 
@@ -30,7 +28,7 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order") @NotNull @NotEmpty @Valid
     private Set<OrderItem> orderItems = new HashSet<>();
 
-    public Order(UUID uuid, LocalDateTime createdAt, Double totalPrice, @NotNull @NotEmpty Set<OrderItem> orderItems) {
+    public Order(String uuid, LocalDateTime createdAt, Double totalPrice, @NotNull @NotEmpty Set<OrderItem> orderItems) {
         this.uuid = uuid;
         this.createdAt = createdAt;
         this.totalPrice = totalPrice;
@@ -40,11 +38,11 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public UUID getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

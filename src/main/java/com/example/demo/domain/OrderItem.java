@@ -12,8 +12,8 @@ public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @NotNull @NotEmpty
-    private String refProduct;
+
+
     @NotNull
     private Integer quantity;
     @NotNull(message = "price is mandatory")
@@ -21,23 +21,25 @@ public class OrderItem implements Serializable {
 
     @ManyToOne
     private Order order;
+    @ManyToOne
+    private Product product;
 
     public OrderItem() {
     }
 
-    public OrderItem(String refProduct, Integer quantity, Double price, Order order) {
-        this.refProduct = refProduct;
+    public OrderItem(Integer quantity, Double price, Order order, Product product) {
         this.quantity = quantity;
         this.price = price;
         this.order = order;
+        this.product = product;
     }
 
-    public String getRefProduct() {
-        return refProduct;
+    public Long getId() {
+        return id;
     }
 
-    public void setRefProduct(String refProduct) {
-        this.refProduct = refProduct;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -56,19 +58,19 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
