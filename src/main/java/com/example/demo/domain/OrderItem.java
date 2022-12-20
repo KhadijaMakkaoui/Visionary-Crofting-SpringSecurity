@@ -2,44 +2,42 @@ package com.example.demo.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
 @Entity
+@Table(name = "order_item")
 public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-
+    @ManyToOne
+    private Product product;
     @NotNull
     private Integer quantity;
     @NotNull(message = "price is mandatory")
     private Double price;
 
     @ManyToOne
-    private Order order;
-    @ManyToOne
-    private Product product;
+    private Order customer_order;
 
     public OrderItem() {
     }
 
-    public OrderItem(Integer quantity, Double price, Order order, Product product) {
+    public OrderItem(Product product, Integer quantity, Double price, Order customer_order) {
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
-        this.order = order;
+        this.customer_order = customer_order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -58,19 +56,19 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public Order getOrder() {
-        return order;
+        return customer_order;
     }
 
     public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+        this.customer_order = order;
     }
 }

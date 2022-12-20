@@ -23,8 +23,8 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String reference;
-    private String name;
-    private Float initialPrice;
+    private String nom;
+    private Float prix_initial;
     private String description;
     private int quantity;
     @OneToMany(mappedBy = "product")
