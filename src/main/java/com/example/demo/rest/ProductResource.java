@@ -4,6 +4,8 @@ import com.example.demo.domain.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductResource {
@@ -14,6 +16,8 @@ public class ProductResource {
         this.produitService = produitService;
     }
 
+    @GetMapping
+    public List<Product> getAllProduits(){ return produitService.getAllProduits(); }
 
     @PostMapping
     public Product addProduit(@RequestBody Product product){
@@ -25,8 +29,6 @@ public class ProductResource {
         return produitService.updateProduit(produit, produitId);
     }
 
-    @GetMapping("")
-    public List<Produit> getAllProduits(){ return produitService.getAllProduits(); }
 
     @GetMapping("/produit/{produitId}")
     public Produit getProduitById(@PathVariable Long produitId){ return produitService.getProduitById(produitId); }
