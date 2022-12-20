@@ -13,18 +13,10 @@ import java.util.List;
     @NoArgsConstructor
     @AllArgsConstructor
     @ToString
-    public class Customer implements Serializable {
-        @Id
-        @GeneratedValue(strategy = GenerationType.TABLE)
-        private Long id;
-        private String nom;
-        @Column(unique = true)
-        private String email;
-        @Column(unique = true)
-        private String telephone;
-        private String password;
+    public class Customer extends Users implements Serializable {
 
-        @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY)
+
+        @OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY)
         private List<Order> orders ;
 
 

@@ -27,6 +27,8 @@ public class Order implements Serializable {
 
     @OneToMany(mappedBy = "customer_order")
     private Set<OrderItem> orderItems = new HashSet<>();
+    @ManyToOne
+    Customer customer;
 
     public Order(String uuid, LocalDateTime createdAt, Double totalPrice, @NotNull @NotEmpty Set<OrderItem> orderItems) {
         this.uuid = uuid;
