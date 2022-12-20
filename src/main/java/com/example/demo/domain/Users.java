@@ -14,8 +14,8 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Users implements Serializable {
+@MappedSuperclass
+public abstract class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
