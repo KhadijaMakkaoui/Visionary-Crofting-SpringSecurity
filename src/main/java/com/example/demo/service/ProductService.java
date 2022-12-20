@@ -5,10 +5,10 @@ import com.example.demo.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProrductService  {
+public class ProductService {
     ProductRepository productRepository;
 
-    public ProrductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
     public Product addProduit(Product produit) { return productRepository.save(produit); }

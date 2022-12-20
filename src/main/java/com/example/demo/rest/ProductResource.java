@@ -1,23 +1,25 @@
 package com.example.demo.rest;
 
-import com.example.demo.service.ProrductService;
+import com.example.demo.domain.Product;
+import com.example.demo.service.ProductService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/products")
 public class ProductResource {
 
-    ProrductService produitService;
+    ProductService produitService;
 
-    /*public ProduitController(ProduitService produitService) { this.produitService = produitService; }
-
-    @PostMapping("/create")
-    public Produit addProduit(@RequestBody Produit produit){
-        return produitService.addProduit(produit);
+    public ProductResource(ProductService produitService) {
+        this.produitService = produitService;
     }
 
+
+    @PostMapping
+    public Product addProduit(@RequestBody Product product){
+        return produitService.addProduit(product);
+    }
+/*
     @PostMapping("/update/{produitId}")
     public Produit updateProduit(@RequestBody Produit produit, @PathVariable Long produitId){
         return produitService.updateProduit(produit, produitId);
