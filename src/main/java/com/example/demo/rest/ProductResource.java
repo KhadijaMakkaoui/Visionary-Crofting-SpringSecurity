@@ -16,10 +16,10 @@ public class ProductResource {
         this.produitService = produitService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Product> getAllProduits(){ return produitService.getAllProduits(); }
 
-    @PostMapping
+    @PostMapping("/add")
     public Product addProduit(@RequestBody Product product){
         return produitService.addProduit(product);
     }
